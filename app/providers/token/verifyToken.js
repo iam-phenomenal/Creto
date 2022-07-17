@@ -1,5 +1,13 @@
 const jwt = require("jsonwebtoken")
 
+exports.signToken = ()=>{
+    const accessToken = jwt.sign({
+        id: user._id,
+        isAdmin: user.isAdmin,
+        isSeller: user.isSeller
+    }, process.env.JWT_SEC, {expiresIn: "1d"})
+    return accessToken
+}
 
 exports.tokenResult = (req, res, next) =>{
     const authHeader = req.headers.token
